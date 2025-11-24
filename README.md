@@ -1,4 +1,4 @@
-# Tarea 3: Git Flow - TodoList API
+# Tarea 3: Git Flow - TaskManager API
 
 ## Datos del Estudiante
 - **Nombre:** Jose David Castillo
@@ -7,7 +7,7 @@
 - **Profesor:** Kelyn Tejada
 
 ## Descripción
-Este proyecto es una API RESTful para gestionar una lista de tareas (TodoList). Se ha desarrollado siguiendo la metodología Git Flow, implementando un CRUD completo con persistencia de datos (In-Memory/SQLite).
+Este proyecto es una API RESTful para gestionar tareas (Task Manager). Se ha desarrollado siguiendo la metodología Git Flow, implementando un CRUD completo con persistencia de datos (In-Memory/SQLite).
 
 ## Estructura del Proyecto
 - **Ramas Principales:** `main`, `dev`, `qa`
