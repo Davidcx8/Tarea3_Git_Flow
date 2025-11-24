@@ -1,6 +1,6 @@
-namespace TodoList.Models
+namespace TaskManager.Models
 {
-    public class TodoItem
+    public class TaskItem
     {
         public int Id { get; set; }
         public string? Title { get; set; }
