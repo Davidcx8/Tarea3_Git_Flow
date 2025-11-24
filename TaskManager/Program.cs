@@ -1,3 +1,6 @@
+using TaskManager.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,8 +9,8 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
-builder.Services.AddDbContext<TodoList.Data.AppDbContext>(options =>
-    options.UseInMemoryDatabase("TodoListDb"));
+builder.Services.AddDbContext<TaskContext>(options =>
+    options.UseInMemoryDatabase("TaskDb"));
 
 var app = builder.Build();
 
