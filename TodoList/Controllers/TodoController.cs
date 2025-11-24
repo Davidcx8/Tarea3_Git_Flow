@@ -81,5 +81,21 @@ namespace TodoList.Controllers
         {
             return _context.TodoItems.Any(e => e.Id == id);
         }
+
+        // DELETE: api/Todo/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTodoItem(int id)
+        {
+            var todoItem = await _context.TodoItems.FindAsync(id);
+            if (todoItem == null)
+            {
+                return NotFound();
+            }
+
+            _context.TodoItems.Remove(todoItem);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
     }
 }
