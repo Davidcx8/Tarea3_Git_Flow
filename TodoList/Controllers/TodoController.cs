@@ -16,6 +16,27 @@ namespace TodoList.Controllers
             _context = context;
         }
 
+        // GET: api/Todo
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<TodoItem>>> GetTodoItems()
+        {
+            return await _context.TodoItems.ToListAsync();
+        }
+
+        // GET: api/Todo/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<TodoItem>> GetTodoItem(int id)
+        {
+            var todoItem = await _context.TodoItems.FindAsync(id);
+
+            if (todoItem == null)
+            {
+                return NotFound();
+            }
+
+            return todoItem;
+        }
+
         // POST: api/Todo
         [HttpPost]
         public async Task<ActionResult<TodoItem>> PostTodoItem(TodoItem todoItem)
@@ -23,10 +44,7 @@ namespace TodoList.Controllers
             _context.TodoItems.Add(todoItem);
             await _context.SaveChangesAsync();
 
-            // We will add GetTodoItem later, so for now just return Ok or CreatedAtAction with null
-            // To follow strict compilation, we can return Ok(todoItem) or CreatedAtAction(nameof(GetTodoItem), new { id = todoItem.Id }, todoItem) if Get exists.
-            // Since Get doesn't exist yet in this feature, I'll return Ok(todoItem).
-            return Ok(todoItem);
+            return CreatedAtAction(nameof(GetTodoItem), new { id = todoItem.Id }, todoItem);
         }
     }
 }
